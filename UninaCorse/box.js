@@ -70,6 +70,7 @@ firebaseCoccos.on("value", function (datasnapshot) {
 
 });
 
+var cont=0;
 
 function myPlot(val)
 {
@@ -78,9 +79,17 @@ function myPlot(val)
         type:'line'
     }]);
 
-    var cnt=0;
-
+    cont++;
     Plotly.extendTraces('chartContainer',{ y:[[val]]},[0]);
+
+    if(cont>10)
+    {
+        Plotly.relayout('chartContainer',{
+            xaxis: {
+                range: [cont-10,cont]
+            }
+        });
+    }
 
     /*setInterval(function(){
         
