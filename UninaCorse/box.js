@@ -50,6 +50,16 @@ function updatePlotTemp()
     },1000);
 
 }
+
+function startPlot(val)
+{
+    Plotly.plot('chartContainer',[{
+        y:[val],
+        type:'line'
+    }]);
+}
+
+startPlot(tempIniz);
 updatePlotTemp();
 
 
@@ -74,11 +84,7 @@ var cont=0;
 
 function myPlot(val)
 {
-    Plotly.plot('chartContainer',[{
-        y:[val],
-        type:'line'
-    }]);
-
+    
     cont++;
     Plotly.extendTraces('chartContainer',{ y:[[val]]},[0]);
 
