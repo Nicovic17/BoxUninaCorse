@@ -26,6 +26,37 @@ var firebaseAcc = firebase.database().ref().child("Accelerazione");
 
 firebaseAcc.on("value", function (datasnapshot) {
 
+    
+
+});
+
+var tempIniz=0;
+var firebaseTemp = firebase.database().ref().child("Temp");
+
+firebaseTemp.on("value", function (datasnapshot) {
+
+    tempIniz=datasnapshot.val();
+    
+});
+
+function updatePlotTemp()
+{
+    myPlot(tempIniz);
+
+    setTimeout(function(){
+
+        updatePlotTemp();
+
+    },1000);
+
+}
+updatePlotTemp();
+
+
+var firebaseCoccos = firebase.database().ref().child("Speed");
+
+firebaseCoccos.on("value", function (datasnapshot) {
+
     let speedM = 0;
     let gear = 0;
     let rpm = 0;
@@ -36,20 +67,6 @@ firebaseAcc.on("value", function (datasnapshot) {
       }
 
     drawSpeedo(datasnapshot.val(), gear, rpm, 100);
-
-});
-
-var firebaseTemp = firebase.database().ref().child("Temp");
-
-firebaseTemp.on("value", function (datasnapshot) {
-
-    myPlot(datasnapshot.val());
-
-});
-
-var firebaseCoccos = firebase.database().ref().child("Caso");
-
-firebaseCoccos.on("value", function (datasnapshot) {
 
 });
 
