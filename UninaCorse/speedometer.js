@@ -80,7 +80,7 @@ let dev = false;
                 return false;
             } else {
                 speed = Math.floor(speed);
-                rpm = rpm * 0;
+                rpm = rpm / 10;
             }
 
             ctx.clearRect(0, 0, 500, 500);

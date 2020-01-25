@@ -22,14 +22,6 @@ firebaseBatteria.on("value", function (datasnapshot) {
 
 });
 
-var firebaseAcc = firebase.database().ref().child("Accelerazione");
-
-firebaseAcc.on("value", function (datasnapshot) {
-
-    
-
-});
-
 var tempIniz=0;
 var firebaseTemp = firebase.database().ref().child("Temp");
 
@@ -63,20 +55,22 @@ startPlot(tempIniz);
 updatePlotTemp();
 
 
-var firebaseCoccos = firebase.database().ref().child("Speed");
+let throttle;
+let speed;
+var fireBaseThrottle = firebase.database().ref().child("Throttle");
 
-firebaseCoccos.on("value", function (datasnapshot) {
+fireBaseThrottle.on("value", function (datasnapshot) {
+    throttle = datasnapshot.val();
+    drawSpeedo(speed,1, throttle, 100);
+})
 
-    let speedM = 0;
-    let gear = 0;
-    let rpm = 0;
+var firebaseSpeed = firebase.database().ref().child("Speed");
 
-    if (speedM > 100){
-        speedM = 1;
-        rpm = 0;
-      }
+firebaseSpeed.on("value", function (datasnapshot) {
 
-    drawSpeedo(datasnapshot.val(), gear, rpm, 100);
+    speed=datasnapshot.val();
+
+    drawSpeedo(speed, 1, throttle, 100);
 
 });
 
