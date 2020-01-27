@@ -9,7 +9,7 @@ let dev = false;
         var ctx = c.getContext("2d");
 
         //Rescale the size
-        ctx.scale(1,1);
+        ctx.scale(0.75,0.75);
 
         var speedGradient = ctx.createLinearGradient(0, 500, 0, 0);
         speedGradient.addColorStop(0, '#00b8fe');

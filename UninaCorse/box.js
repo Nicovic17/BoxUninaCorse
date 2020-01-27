@@ -57,11 +57,13 @@ updatePlotTemp();
 
 let throttle;
 let speed;
+let breakk;
 var fireBaseThrottle = firebase.database().ref().child("Throttle");
 
 fireBaseThrottle.on("value", function (datasnapshot) {
     throttle = datasnapshot.val();
     drawSpeedo(speed,1, throttle, 100);
+    drawBreakValue(breakk,throttle);
 })
 
 var firebaseSpeed = firebase.database().ref().child("Speed");
@@ -72,6 +74,14 @@ firebaseSpeed.on("value", function (datasnapshot) {
 
     drawSpeedo(speed, 1, throttle, 100);
 
+});
+
+var fireBaseBreak = firebase.database().ref().child("Break");
+
+fireBaseBreak.on("value", function (datasnapshot) {
+	
+	breakk=datasnapshot.val();
+	drawBreakValue(breakk,throttle);
 });
 
 var cont=0;
