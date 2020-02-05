@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>Login</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+
+
+</head>
+
+<body>
+
+    <div class="main-div" id="login_div">
+        <img src="logo.jpg" width="100px" height="129px"/>
+        <h3>Effettua login</h3>
+        <input type="email" placeholder="Email" id="email_field" />
+        <input type="password" placeholder="Password" id="password_field" />
+
+        <button onclick="login()">Login</button>
+        <button onclick="showRegister()">Register</button>
+
+    </div>
+
+    <div class="loggedin-div" id="user_div">
+        <img src="logo.jpg" width="100px" height="129px"/>
+        <h3>Benvenuto</h3>
+        <p id="user_para">Sei loggato</p>
+        <button onclick="mostra()">Mostra BOX</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <div class="register-div" id="register_div">
+        <img src="logo.jpg" width="100px" height="129px"/>
+        <h3>Inserisci dati nuovo utente</h3>
+        <input type="email" placeholder="Email" id="reg_email_field" />
+        <input type="password" placeholder="Password" id="reg_password_field" />
+        <button onclick="register()">Conferma</button>
+        <button onclick="indietro()">Indietro</button>
+    </div>
+
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-firestore.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    
+</body>
+
+<script src="index.js"></script>
+
+</html>
