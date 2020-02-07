@@ -10,7 +10,11 @@ var firebaseConfig = {
     measurementId: "G-PJ9CX3M1GD"
 };
 // Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
+firebase.auth().languageCode = 'it';
+var provider = new firebase.auth.GoogleAuthProvider();
+provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 
 
 firebase.auth().onAuthStateChanged(function (user) {

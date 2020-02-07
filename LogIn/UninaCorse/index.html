@@ -21,9 +21,7 @@
 
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCqXkd1PykNsXdMX2mG3cXiQwBuem_R60&callback=initMap"
-        type="text/javascript"></script>
+
 
     <script src="https://kit.fontawesome.com/f6b29a4c68.js" crossorigin="anonymous"></script>
 
@@ -42,6 +40,8 @@
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+
 
 
 
@@ -50,6 +50,13 @@
     <style>
         #battery {
             position: absolute;
+        }
+
+        #mapdiv {
+            height: 500px;
+            width: 1000px;
+            padding: 30px;
+            margin: 30px;
         }
     </style>
 
@@ -220,7 +227,8 @@
 
                         <div id="#" class="coll-sm-4">
                             <h1 class="banner-font">Altro</h1>
-                            <div id="chartContainer">
+                            <div id="map">
+
                             </div>
                         </div>
 
@@ -243,6 +251,25 @@
 
 
                 </div>
+
+                <div class="row">
+
+                    <div id="map" class="coll-sm-12">
+                        <h1 class="banner-font">Mappa</h1>
+                        <div id="mapdiv" class="col-sm-12">
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <input type="button" value="Click" onclick="move()">
+                </div>
+
+
+            </div>
 
 
         </article>
@@ -279,6 +306,54 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+
+    <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+
+    <script>
+        map = new OpenLayers.Map("mapdiv");
+        map.addLayer(new OpenLayers.Layer.OSM());
+
+        var lonLat = new OpenLayers.LonLat(10.022154, 44.680667)
+            .transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+            );
+
+        var zoom = 16;
+
+        var markers = new OpenLayers.Layer.Markers("Markers");
+        map.addLayer(markers);
+
+        markers.addMarker(new OpenLayers.Marker(lonLat));
+
+        map.setCenter(lonLat, zoom);
+
+        function move() {
+            markers.destroy();
+            newMarker();
+        }
+
+        function newMarker() {
+            
+
+            var lonLat = new OpenLayers.LonLat(10.027399, 44.681493)
+                .transform(
+                    new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                    map.getProjectionObject() // to Spherical Mercator Projection
+                );
+
+            var zoom = 16;
+
+            var markers = new OpenLayers.Layer.Markers("Markers");
+            map.addLayer(markers);
+
+            markers.addMarker(new OpenLayers.Marker(lonLat));
+            map.setCenter(lonLat, zoom);
+        }
+    </script>
+
+
+
 
 
 
