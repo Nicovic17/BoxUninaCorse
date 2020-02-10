@@ -54,9 +54,7 @@
 
         #mapdiv {
             height: 500px;
-            width: 1000px;
-            padding: 30px;
-            margin: 30px;
+            width: 100%;
         }
     </style>
 
@@ -148,6 +146,11 @@
 
                 <div class="row">
 
+                    <div class="col-sm-4 ">
+                        <h1 id="#" class="banner-font">Mappa</h1>
+                        <div id="mapdiv" class="col-sm-12"></div>
+                        
+                    </div>
 
 
                     <div class="col-sm-4">
@@ -163,14 +166,11 @@
 
                     <div class="col-sm-4">
                         <h1 id="lvlBattery" class="banner-font">Batteria</h1>
-                        <div id="battery" class="fa coll-sm-6 pull-right">
+                        <div id="battery" class="fa coll-sm-6">
                         </div>
                     </div>
 
-                    <div class="col-sm-4 pull-right">
-                        <h1 id="#" class="banner-font">Break %</h1>
-                        <div id="chartContainerb" style="height: 370px; max-width: 300px; margin: 0px auto;"></div>
-                    </div>
+                    
 
 
                 </div>
@@ -256,9 +256,7 @@
 
                     <div id="map" class="coll-sm-12">
                         <h1 class="banner-font">Mappa</h1>
-                        <div id="mapdiv" class="col-sm-12">
-
-                        </div>
+                        
                     </div>
 
 
@@ -309,47 +307,8 @@
 
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 
-    <script>
-        map = new OpenLayers.Map("mapdiv");
-        map.addLayer(new OpenLayers.Layer.OSM());
-
-        var lonLat = new OpenLayers.LonLat(10.022154, 44.680667)
-            .transform(
-                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-                map.getProjectionObject() // to Spherical Mercator Projection
-            );
-
-        var zoom = 16;
-
-        var markers = new OpenLayers.Layer.Markers("Markers");
-        map.addLayer(markers);
-
-        markers.addMarker(new OpenLayers.Marker(lonLat));
-
-        map.setCenter(lonLat, zoom);
-
-        function move() {
-            markers.destroy();
-            newMarker();
-        }
-
-        function newMarker() {
-            
-
-            var lonLat = new OpenLayers.LonLat(10.027399, 44.681493)
-                .transform(
-                    new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-                    map.getProjectionObject() // to Spherical Mercator Projection
-                );
-
-            var zoom = 16;
-
-            var markers = new OpenLayers.Layer.Markers("Markers");
-            map.addLayer(markers);
-
-            markers.addMarker(new OpenLayers.Marker(lonLat));
-            map.setCenter(lonLat, zoom);
-        }
+    <script src="map.js">
+        
     </script>
 
 
