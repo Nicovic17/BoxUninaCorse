@@ -1,9 +1,19 @@
 body{
-    background: #fff;
+    background: gray;
     padding: 0px;
     margin: 0px;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+    animation: color-change 10s alternate infinite;
+}
+
+@keyframes color-change{
+    0%{
+        background: gray;
+    }
+    100%{
+        background: white;
+    }
 }
 
 input, button{

@@ -61,6 +61,27 @@ fireBaseBreak.on("value", function (datasnapshot) {
 	breakk=datasnapshot.val();
 });
 
+//Gestione percetuali
+
+var firebaseAcc = firebase.database().ref().child("Accelerazione");
+
+firebaseAcc.on("value", function (datasnapshot) {
+
+    acc=datasnapshot.val();
+
+    setAccPerc(acc);
+
+});
+
+var firebaseFren = firebase.database().ref().child("Break");
+
+firebaseFren.on("value", function (datasnapshot) {
+
+    fren=datasnapshot.val();
+
+    setFrenPerc(fren);
+
+});
 
 
 
