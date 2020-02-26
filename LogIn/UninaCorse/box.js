@@ -15,7 +15,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var firebaseBatteria = firebase.database().ref().child("Batteria");
-
 firebaseBatteria.on("value", function (datasnapshot) {
 
     //Animazione batteria
@@ -24,62 +23,33 @@ firebaseBatteria.on("value", function (datasnapshot) {
 
 });
 
-var tempIniz=0;
 var firebaseTemp = firebase.database().ref().child("Temp");
-
 firebaseTemp.on("value", function (datasnapshot) {
 
     tempIniz=datasnapshot.val();
     
 });
 
-
-let throttle;
 let speed;
-let breakk;
-var fireBaseThrottle = firebase.database().ref().child("Throttle");
-
-fireBaseThrottle.on("value", function (datasnapshot) {
-    throttle = datasnapshot.val();
-    drawSpeedo(speed,1, throttle, 100);
-})
-
 var firebaseSpeed = firebase.database().ref().child("Speed");
-
 firebaseSpeed.on("value", function (datasnapshot) {
 
-    speed=datasnapshot.val();
-
-    drawSpeedo(speed, 1, throttle, 100);
+    drawSpeedo(datasnapshot.val());
 
 });
-
-var fireBaseBreak = firebase.database().ref().child("Break");
-
-fireBaseBreak.on("value", function (datasnapshot) {
-	
-	breakk=datasnapshot.val();
-});
-
 //Gestione percetuali
 
-var firebaseAcc = firebase.database().ref().child("Accelerazione");
+var firebaseThrottle = firebase.database().ref().child("Throttle");
+firebaseThrottle.on("value", function (datasnapshot) {
 
-firebaseAcc.on("value", function (datasnapshot) {
-
-    acc=datasnapshot.val();
-
-    setAccPerc(acc);
+    setThrottlePerc(datasnapshot.val());
 
 });
 
-var firebaseFren = firebase.database().ref().child("Break");
+var firebaseBreak = firebase.database().ref().child("Break");
+firebaseBreak.on("value", function (datasnapshot) {
 
-firebaseFren.on("value", function (datasnapshot) {
-
-    fren=datasnapshot.val();
-
-    setFrenPerc(fren);
+    setFrenPerc(datasnapshot.val());
 
 });
 

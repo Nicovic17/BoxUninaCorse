@@ -6,7 +6,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
         var user = firebase.auth().currentUser;
 
-        window.alert("Logged as: "+user.email);
+        //window.alert("Logged as: "+user.email);
 
     
     } else {
