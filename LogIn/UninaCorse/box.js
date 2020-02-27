@@ -22,7 +22,7 @@ firebaseBatteria.on("value", function (datasnapshot) {
     lvlBattery.innerHTML="Batteria residua: "+datasnapshot.val()+"%";
 
 });
-
+let tempIniz;
 var firebaseTemp = firebase.database().ref().child("Temp");
 firebaseTemp.on("value", function (datasnapshot) {
 
@@ -30,7 +30,6 @@ firebaseTemp.on("value", function (datasnapshot) {
     
 });
 
-let speed;
 var firebaseSpeed = firebase.database().ref().child("Speed");
 firebaseSpeed.on("value", function (datasnapshot) {
 
