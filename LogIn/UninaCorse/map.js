@@ -2,7 +2,7 @@
         map = new OpenLayers.Map("mapdiv");
         map.addLayer(new OpenLayers.Layer.OSM());
 
-        var lonLat = new OpenLayers.LonLat(10.022154, 44.680667)
+        var lonLat = new OpenLayers.LonLat(14.4475,40.88141666666667)
             .transform(
                 new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
                 map.getProjectionObject() // to Spherical Mercator Projection
@@ -39,6 +39,21 @@
                 newMarker(10.027399,44.681493);
                 trimmer++;
             }
+            
+        }
+
+        function move(long, lat) {
+            
+            //window.alert("Got: "+long+","+lat);
+
+            markers.destroy();
+            
+
+            
+                
+                newMarker(lat,long);
+                
+            
             
         }
 

@@ -69,6 +69,23 @@ firebaseBreak.on("value", function (datasnapshot) {
 });
 
 
+//Gestione mappa
+
+var firebaseMap = firebase.database().ref().child("Map");
+
+firebaseMap.on("value", function (datasnapshot) {
+
+    var i=0;
+    var coordinates=[];
+    
+    datasnapshot.forEach(function(child){
+        coordinates[i]=child.val();
+    i++;
+    });
+
+    move(coordinates[0],coordinates[1]);
+
+});
 
 
 
